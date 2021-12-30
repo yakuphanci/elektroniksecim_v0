@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "YeniAday";
+}
+<div class="container">
+
+    <h2>Admin Panel - Aday Ekle </h2>
+    <h4>Seçim: @ViewBag.secimAdi # @ViewBag.secimID</h4>
+    <hr />
+    <div class="alert alert-info" role="alert">
+        Seçimdeki adaylar aşağıda listelenmiştir. Çıkar tuşuna basarak adayı çıkartabilirsin.
+    </div>
+    <hr />
+</div>
+<hr />
+<div class="container">
+    @try
+    {
+        if (TempData["AdaySilindi"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["AdaySilindi"]
+            </div>
+        }
+    }
+    catch (Exception) { }
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Aday ID</th>
+                <th scope="col">Aday Adı</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("SecimIptal", "Admin", FormMethod.Post))
+            {
+                foreach (var aday in Model)
+                {
+                    <tr>
+                        <td>@aday.adayID</td>
+                        <td>@aday.adayAdi</td>
+                        <td>
+                            <a href="/Admin/AdaySil?secimID=@aday.secimID&adayID=@aday.adayID&adayAdi=@aday.adayAdi" class="btn btn-sm mt-3 btn-danger">Çıkar</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+
+    <!--EĞER ADMİN İÇİN LİSTELENECEK HİÇ ADAY YOKSA. BİLGİYİ YAZDIR.-->
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            Listelenecek herhangi bir başlamış seçim bulunmuyor.
+        </div>
+    }
+    <hr />
+
+
+    @try
+    {
+        if (TempData["AdayEklendi"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["AdayEklendi"]
+            </div>
+        }
+    }
+    catch (Exception) { }
+
+    @using (Html.BeginForm("AdayEkle", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+                    <label for="adayAdi">Aday İsmi</label>
+                    <div class="form-inline" style="width: 100%; margin:auto;">
+                        <input type="text" style="display: inline-block; min-width:100px; max-width:60px;  width:100%;" class="form-control text-center" name="secimID" id="secimID" value="@ViewBag.secimID" aria-describedby="adayAdiHelp" placeholder="Aday İsmi" title="Seçim ID" required readonly>
+                        <input type="text" style="display: inline-block; min-width:100px; max-width:560px;  width:100%;" class="form-control text-center" name="adayAdi" id="adayAdi" aria-describedby="adayAdiHelp" placeholder="Aday İsmi" required>
+                    </div>
+                    <small id="adayAdiHelp" class="form-text text-muted">
+                        Oylamaya eklenecek adayın ismi. Oylama ekranında ismi gözükecektir.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+                    <button type="submit" style="display: inline-block; max-width:550px; width:100%" class="btn btn mt-3 btn-info" name="adayEkle" id="adayEkle">
+                        Yeni Aday Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>

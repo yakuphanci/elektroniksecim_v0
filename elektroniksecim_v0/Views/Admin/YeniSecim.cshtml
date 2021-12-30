@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "YeniSecim";
+}
+
+<h2>YeniSecim</h2>
+
+
+
+<div class="container">
+
+    @using (Html.BeginForm("SecimOlustur", "Admin", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+                    <label for="baslangicTarihi">Seçim İsmi</label>
+                    <div class="form-inline" style="width: 100%; margin:auto;">
+                        <input type="text" style="display: inline-block; min-width:100px; max-width:560px;  width:100%;" class="form-control text-center" name="secimAdi" id="secimAdi" aria-describedby="secimAdiHelp" placeholder="Seçim İsmi" required>
+                    </div>
+                    <small id="secimAdiHelp" class="form-text text-muted">
+                        Oylama sırasında gözükecek seçim ismi. Açıklayıcı bir isim giriniz.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+                    <label for="baslangicTarihi">Başlangıç Zamanı</label>
+                    <div class="form-inline" style="width: 100%; margin:auto;">
+                        <input type="date" style="display: inline-block; width:100%;" class="form-control text-center" name="baslangicTarihi" id="baslangicTarihi" aria-describedby="baslangicTarihiHelp" placeholder="gg.aa.yyyy" required>
+                        <input type="time" style="display: inline-block; width:100%;" class="form-control text-center" name="baslangicSaati" id="baslangicSaati" aria-describedby="baslangicTarihiHelp" placeholder="ss.dd" required>
+                    </div>
+                    <small id="baslangicTarihiHelp" class="form-text text-muted">
+                        Seçimin başlangıç tarihi. Anımızdan ileri bir tarih olmak zorunda.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group" style="width: 100%; margin:auto;">
+                    <label for="baslangicTarihi">Bitiş Zamanı</label>
+                    <div class="form-inline">
+                        <input type="date" style="display: inline-block; width:100%;" class="form-control text-center" name="bitisTarihi" id="bitisTarihi" aria-describedby="bitisTarihiHelp" placeholder="gg.aa.yyyy" required>
+                        <input type="time" style="display: inline-block; width:100%;" class="form-control text-center" name="bitisSaati" id="bitisSaati" aria-describedby="bitisTarihiHelp" placeholder="ss.dd" required>
+                    </div>
+                    <small id="bitisTarihiHelp" class="form-text text-muted">
+                        Seçimin bitiş tarihi. Başlangıç tarihinden ileri bir tarih olmak zorunda.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+
+                    <button type="submit" style="display: inline-block; max-width:550px; width:100%" class="btn btn mt-3 btn-info" name="secimOlustur" id="bitisSaati">
+                        Yeni Seçim Oluştur
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    }
+
+    @try
+    {
+        if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["Error"]
+            </div>
+        }
+        if (TempData["SecimOlustu"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["SecimOlustu"]
+            </div>
+        }
+    }
+    catch (Exception) { }
+
+</div>

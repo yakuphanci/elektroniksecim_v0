@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="container">
+    <div class="wrapper">
+        <div class="logo"> <img src="~/img/vote0.png" alt=""> </div>
+        <div class="text-center mt-4 name"> E-Seçim </div>
+
+
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            <form class="p-3 mt-3">
+                <div class="form-field d-flex align-items-center">
+                    <span class="far fa-user"></span>
+                    <input type="text" name="kullaniciAdi" id="userName" placeholder="Kullanıcı Adı">
+                </div>
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-key"></span>
+                    <input type="password" name="parola" id="pwd" placeholder="Şifre">
+                </div>
+                <button type="submit" class="btn mt-3">Giriş Yap</button>
+            </form>
+            <div class="text-center fs-6"> <a href="/Register/Index">Kaydol</a> </div>
+        }
+    </div>
+</div>

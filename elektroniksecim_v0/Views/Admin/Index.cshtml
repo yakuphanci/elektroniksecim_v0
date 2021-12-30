@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<div class="container">
+    <h2>Admin Panel </h2>
+    <h4>
+        Hoşgeldin @Session["kullaniciFullName"]
+    </h4>
+    <hr />
+    <div class="alert alert-info" role="alert">
+        Yapabileceğiniz işlemler aşağıda listelenmiştir. Yapmak istediğiniz işlemin butonuna tıklayarak ilgili sayfaya gidebilirsiniz.
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Listeleme İşlemleri</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Başlamamış Seçimleri Listele: </td>
+                <td>
+                    <a href="/Admin/GelecekSecimler" class="btn  btn-sm btn-success"> Listele </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Başlamış Seçimleri Listele: </td>
+                <td>
+                    <a href="/Admin/BaslamisSecimler" class="btn  btn-sm btn-success"> Listele </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Bitmiş Seçimleri Listele: </td>
+                <td>
+                    <a href="/Admin/BitmisSecimler" class="btn  btn-sm btn-success"> Listele </a>
+                </td>
+            </tr>
+            <tr>
+                <td>İptal Edilen Seçimleri Listele: </td>
+                <td>
+                    <a href="/Admin/IptalEdilenSecimler" class="btn  btn-sm btn-success"> Listele </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<hr />
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Oluşturma İşlemleri</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Yeni Seçim Oluşturma İşlemi: </td>
+                <td>
+                    <a href="/Admin/YeniSecim" class="btn  btn-sm btn-success"> Oluştur </a>
+                </td>
+            </tr>
+          
+
+
+        </tbody>
+    </table>
+</div>

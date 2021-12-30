@@ -1,0 +1,85 @@
+﻿@using elektroniksecim_v0.Models.Entity
+@model List<GetBaslamamisSecimler>
+
+@{
+    ViewBag.Title = "GelecekSecimler";
+}
+
+
+<div class="container">
+    <h2>Admin Panel - Başlamamış Seçimler</h2>
+    <hr />
+    <div class="alert alert-info" role="alert">
+        Başlamamış seçimler aşağıda listelenmiştir. İptal tuşuna basarak seçimi iptal edebilirsiniz.
+    </div>
+    <hr />
+</div>
+
+<div class="container">
+    @try
+    {
+        if (TempData["SecimSilindi"]!=null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["SecimSilindi"]
+            </div>
+        }
+    }
+    catch (Exception) { }
+
+
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Seçim ID</th>
+                <th scope="col">Seçim Adı</th>
+                <th scope="col">Başlangıç Tarihi</th>
+                <th scope="col">Bitiş Tarihi</th>
+                <th scope="col">Durum</th>
+                <th scope="col">#İptal</th>
+                <th scope="col">#Düzenle</th>
+                <th scope="col">#Seçmen Ata</th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("SecimIptal", "Admin", FormMethod.Post))
+            { 
+                foreach (var secim in Model)
+                {
+                    <tr>
+                        <td>@secim.secimID</td>
+                        <td>@secim.secimAdi</td>
+                        <td>@secim.baslangicTarihi.ToString("dd.MM.yyyy HH.mm.ss")</td>
+                        <td>@secim.bitisTarihi.ToString("dd.MM.yyyy HH.mm.ss")</td>
+                        <td>@secim.durumTypeAciklama</td>
+                        <td>
+                            <a href="/Admin/SecimIptal?secimID=@secim.secimID" class="btn btn-sm mt-3 btn-danger">İptal Et</a>
+                        </td>
+                        <td>
+                            <a href="/Admin/YeniAday?secimID=@secim.secimID" class="btn btn-sm mt-3 btn-success">Aday Ekle</a>
+                        </td>
+                        <td>
+                            <a href="/Admin/SecmenAta?secimID=@secim.secimID" class="btn btn-sm mt-3 btn-info">Seçmen Ata</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    
+
+    
+    <!--EĞER ADMİN İÇİN LİSTELENECEK HİÇ SEÇİM YOKSA. BİLGİYİ YAZDIR.-->
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+             Listelenecek herhangi bir başlamamış seçim bulunmuyor.
+        </div>
+    }
+    <hr />
+</div>
+

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "SecmenAta";
+}
+
+<div class="container">
+
+    <h2>Admin Panel - Seçmen Durumları </h2>
+    <h4>Seçim: @ViewBag.secimAdi # @ViewBag.secimID</h4>
+    <hr />
+    <div class="alert alert-info" role="alert">
+        Bu seçimde oy kullanma hakkı olan tüm seçmelerin durumları aşağıda listelenmiştir.
+    </div>
+</div>
+<hr />
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Seçmen ID</th>
+                <th scope="col">Seçmen Adı</th>
+                <th scope="col">#Durum</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("SecmenAta", "Admin", FormMethod.Post))
+            {
+                foreach (var secmen in Model)
+                {
+                    <tr>
+                        <td>@secmen.secimID</td>
+                        <td>@DbFunctions.GetSecmenAdi(secmen.secmenID)</td>
+                        <td class="@(secmen.oyHakki == false ? "alert-success" : "alert-danger")">@(secmen.oyHakki == false ? "Kullandi" : "Kullanmadi")</td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+
+    @try
+    {
+        if (TempData["SecmenAtandi"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["SecmenAtandi"]
+            </div>
+        }
+    }
+    catch (Exception) { }
+
+    @using (Html.BeginForm("TumSecmenleriAta", "Admin", FormMethod.Post))
+    {
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group">
+                    <input type="text" style="display: block; min-width:100px; max-width:60px;  width:100%;" class="form-control text-center invisible" name="secimID" id="secimID" value="@ViewBag.secimID" aria-describedby="adayAdiHelp" placeholder="Aday İsmi" title="Seçim ID" required readonly>
+                    <button type="submit" style="display: inline-block; max-width:550px; width:100%" class="btn btn mt-3 btn-info" name="oyHakkiEkle" id="oyHakkiEkle">
+                        Bu seçim için tüm seçmenlere oy hakkı tanımla.
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

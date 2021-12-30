@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71dfa85e0ac64955b382ec1c2dacccdf" Name="Diagram1">
+        <EntityTypeShape EntityType="elektroniksecimModel.Aday" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.Admin" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.Block" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.Kullanici" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.KullaniciDurumType" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.OyIslemi" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.Secim" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.SecimDurumType" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.SecmeHakki" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.Secmen" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.ChainWithValid" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.GetBaslamamisSecimler" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.GetBaslamisSecimler" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.GetBitmisSecimler" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.GetIptalEdilmisSecimler" Width="1.5" PointX="11.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="elektroniksecimModel.GetSecimWithEnCokOyAlanAday" Width="1.5" PointX="2.75" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="elektroniksecimModel.FK__Aday__secimID__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK__OyIslemi__adayID__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK_Admin_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK_Kullanici_KullaniciDurumType" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK_Secmen_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK__OyIslemi__secimI__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK__OyIslemi__secmen__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK__SecmeHakk__secim__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="elektroniksecimModel.FK__SecmeHakk__secme__0C85DE4D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

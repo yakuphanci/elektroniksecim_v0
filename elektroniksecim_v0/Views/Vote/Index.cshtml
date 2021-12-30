@@ -1,0 +1,38 @@
+﻿@using elektroniksecim_v0.Models.Entity
+@model List<Aday>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Oy Kullan - @TempData["Error"]</h2>
+
+<div class="container">
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Aday ID</th>
+                <th scope="col">Aday Adı</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var aday in Model)
+            {
+
+                <tr>
+                    <td>@aday.adayID</td>
+                    <td>@aday.adayAdi</td>
+                    <td>
+                        <a href="Vote/OyKullan?secimID=@Convert.ToInt64(ViewBag.secimID)&adayID=@aday.adayID" type="submit" class="btn btn-sm btn-success"> Oy Ver </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

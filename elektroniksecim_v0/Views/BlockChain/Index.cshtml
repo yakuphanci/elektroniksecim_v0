@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>BlockChain Test Sayfası </h2>
+    <hr />
+    <div class="alert alert-info" role="alert">
+        Sistemde gerçekleşen her oy işleminin Transaction'larından oluşan BlockZinciri aşağıda listelenmiştir.'
+    </div>
+    <hr />
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Previous Block Hash</th>
+                <th scope="col">Oy İşlem ID</th>
+                <th scope="col">Current Block Hash</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var block in Model)
+            {
+                if (block.oyID != 0)
+                {
+                    if (ViewBag.Tutarsiz == null && block.ValidWithPrev == false)
+                    {
+                        ViewBag.Tutarsiz = "Tutarsiz veri" ;
+                    }
+                    <tr class="@(ViewBag.Tutarsiz == null ? "alert-success" : "alert-danger")">
+                        <td><input style="width:300px" value="@DbFunctions.ConvertHashToString(block.prevBlockHash)" class="form-control text-center" readonly /></td>
+                        <td>@block.oyID</td>
+                        <td><input style="width:300px" value="@DbFunctions.ConvertHashToString(block.blockHash)" class="form-control text-center" readonly /></td>
+                        <td>
+                            @(ViewBag.Tutarsiz == null ? "Tutarlı":"Tutarsız Blok!")
+                        </td>
+
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
